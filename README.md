@@ -3,7 +3,7 @@
 
 Here we have to learn to how we design a basic PLL circuit from scratch to post layout simulation.
 
-PLL Specification
+# PLL Specification
 
 Technology - SKywater 130nm
 
@@ -30,7 +30,7 @@ Jitter < 20ns
 
 
 
-Overview 
+# Overview 
 
 Day 1:    PLL Theory and setup tools for simulation
 
@@ -51,18 +51,20 @@ Day 2:  PLL Circuit Design and Pre and Post simulation
 10) Post layout simulation
 11) Tapeout
 
-Day 1 : PLL Theory and setup tools for simulation 
-PLL Theory
+## Day 1 : PLL Theory and setup tools for simulation 
+# PLL Theory
 Why PLL?
+
+
 To get precise clock signal without frequency or phase noise.A PLL is a feedback system that compares the output phase with the input phase.
 The comparison is performed by a "phase comparator".To arrive the concept of phase locking, let us consider the problem of aligning the output phase of VCO with the phase of a
 reference clock.
 
-Basic block diagram of PLL
+# Basic block diagram of PLL
 
 ![image](https://user-images.githubusercontent.com/67455761/127779269-1ab34b4f-a3df-48b1-90e8-58d3c3325e24.png)
 
-PLL have five blocks
+### PLL have five blocks
 
 1) Phase Frequency Detector (PFD)
 
@@ -106,65 +108,158 @@ If the two signals are shifted by 180, the output voltage must be at the highest
 
 
 
+## Some Important term in Phase Locked Loop
+
+1) Lock Range 
+
+The Frequency range the PLL is able to follow input frequency variations once locked.
 
 
+2) Capture Range
 
+The Frequency range the PLL is able to lock-in when starting from an unlocked condition.
 
+3) Settling time
 
+ The time with in which the PLL is able to lock-in form an unlocked condition
+ 
+ 
+ 
+##  Day 1 LAB Setup : 
+  
+  In this workshop we use two simulation tools:
+  1) Ng-spice - for Circuit design and Simulation
+  2) Magic    - for Layout Design and parasitic Extraction
+  
+  
+ Installation Process Setup
+ 1) Ng-spice we write code in unix system
+ 
+  sudo apt-get install ngspice
+  
+  after installation we have to fetch SKYWATER 130nm PDK technology file.
+  
+ 2) Install the magic tool
+ 
+   We use  the git  clone  and install the magic file.Then we need compile it, which requires installing the prerequisites from opendesigncircuit.com. Then we execute the command ./configure. The command we execute. We next execute the sudo make install command.
+   
+   Then we should install the sky130nm technology information that Magic requires for layout design.
+   
+   
+   ## Day 2  PLL Circuit and  Layout Simulation
+   
+     We have to design the single block of PLL and simulate the circuit in ngspice.
+     
+ 
+### Individual block and result of PLL Design
 
-
-
-
-
-
-
-
-
-Frequency Divider Circuit
-
+##### 1) Frequency Divider Circuit
+    
+    wave form of the FD show here:
+    
 ![image](https://user-images.githubusercontent.com/67455761/127774410-63873540-d18c-4df7-bcd3-3c99e8342243.png)
 
-Charge Pump Output
+<b>Red:</b> Clock 1 <br>
+<b>Blue:</b> Clock 2 <br>
+<b>Orange:</b> Up Signal <br>
+<b>Green:</b> Down Signal
+
+
+#### 2) Charge Pump 
+
+#### CP response when "UP" signal is high:
 
 ![image](https://user-images.githubusercontent.com/67455761/127776158-1fde4ddc-f5f6-4931-8546-be3689f09fbd.png)
 
-Voltage Control Oscillator simultator Output
+<b>Red:</b> Charge pump output voltage <br>
+
+#### 3) Voltage Control Oscillator simultator Output
+
+#### VCO waveform is as shown below:
 
 ![image](https://user-images.githubusercontent.com/67455761/127776206-67bc2a17-cde5-4ab2-ad36-7f0ef047573a.png)
 
-PFD simulator Output
+<b>Red:</b> Control Voltage <br>
+<b>Blue:</b> Output Clock <br>
+
+###  4) Frequency Divider 
+
+#### The Frequency Divider waveform is as shown below:
 
 ![image](https://user-images.githubusercontent.com/67455761/127776406-b6cd0291-2ced-4c37-b707-3086fb1307e8.png)
 
-PLL simulator OutPut
+<b>Red:</b> Output Clock <br>
+<b>Blue:</b> Input Clock <br>
+
+### 5) PLL
+
+#### The PLL waveform is as shown below: 
+
 ![image](https://user-images.githubusercontent.com/67455761/127777450-6f04f7f5-2298-4924-80e3-ce7c0f318064.png)
 
+<b>Red:</b> Reference Clock <br>
+<b>Blue:</b> Output Clock Divided by 8 <br>
+<b>Yellow:</b> Down Signal <br>
+<b>Brown:</b> Up Signal <br>
+<b>Pink (top) :</b>Charge pump output <br>
 
-Layout
-1) PFD layout
 
+#### Layout
+
+In layout, these are the following different colour codes for different components used in layout: 
+
+1. p-diffusion - plane orange colour
+
+2. n-diffusion - plane green colour
+
+3. polysilicon - plane red
+
+4. n-well - dotted  lines
+
+5. metal1 layer - purple
+
+6. local interconnect layer - blue
+
+To connect two transistors, we use interconnect layer. To connect two metal layers, we use the contact/via.
+
+### 1) FD layout
+ PFD layout show below 
+ 
+ 
 ![image](https://user-images.githubusercontent.com/67455761/127777573-ceed4a21-5c29-4b60-9ce8-bb4e2accf2b5.png)
 
-2)PFD layout
+### 2) PFD layout
 
 ![image](https://user-images.githubusercontent.com/67455761/127777596-04855662-6ff3-49f8-a0ae-ff70ae753a8d.png)
 
-3)Charge Pump layout
+### 3)Charge Pump layout
 
 ![image](https://user-images.githubusercontent.com/67455761/127777653-15f16b37-e166-46d4-8040-d5877c8614d6.png)
 
-4)VCO layout
+### 4)VCO layout
 
 ![image](https://user-images.githubusercontent.com/67455761/127777696-aaf96813-83cc-49ca-bb21-924416574191.png)
 
 
-5)PFD Post layout simulation
+### 5)PFD Post layout simulation
 
 ![image](https://user-images.githubusercontent.com/67455761/127777907-abb55fac-1427-47ae-8f1b-f1ce4673dbcf.png)
 
 
 
+### About Tapeout
 
+Tapeout refers to the process of sending our design to the fab once it has been prepared with all of the additional assistance we need. First, we must link our silicon wafer to the outside world. We utilise I/O pads for this.
+
+Then we should have designs for any type of serial communication, such as I2C, UART, and other peripherals. Memory must also be included, which takes up a lot of space. Mechanisms for testing should also be included. 
+
+Taking care of all of this gets complex, therefore we need select a driver to enable our IP to fulfil the required standards for fabrication.
+
+# Acknowledgement
+
+1. I would like to thank Mr. Kunal Ghosh, co-founder [VSD](https://www.vlsisystemdesign.com/), for providing me with this wonderful 2-day workshop.
+
+2. I would like to thank Ms. Lakshmi S, for guiding throughout the workshop about how to design PLL.
 
 
 
