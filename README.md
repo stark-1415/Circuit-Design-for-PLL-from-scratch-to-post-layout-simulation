@@ -204,7 +204,7 @@ The Frequency range the PLL is able to lock-in when starting from an unlocked co
 <b>Pink (top) :</b>Charge pump output <br>
 
 
-#### Layout
+###  Layout Design For PLL
 
 In layout, these are the following different colour codes for different components used in layout: 
 
@@ -260,57 +260,5 @@ Taking care of all of this gets complex, therefore we need select a driver to en
 1. I would like to thank Mr. Kunal Ghosh, co-founder [VSD](https://www.vlsisystemdesign.com/), for providing me with this wonderful 2-day workshop.
 
 2. I would like to thank Ms. Lakshmi S, for guiding throughout the workshop about how to design PLL.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
