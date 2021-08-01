@@ -1,5 +1,64 @@
-# Circuit-Design-for-PLL-from-scratch-to-post-layout-simulation
+# Circuit-Design-for-PLL-from-scratch-to-post-layout-simulation Design using SKY130nm-Technology
+2 day workshop 31st July to 1st August
+
 Here we have to learn to how we design a basic PLL circuit from scratch to post layout simulation.
+
+Overview 
+Day 1:    PLL Theory and setup tools for simulation
+
+content:  
+
+1) PLL theory
+2) Tool setup
+3) Development Flow
+4) Introduction to PDK,simulation tools
+
+Day 2:  PLL Circuit Design and Pre and Post simulation 
+
+5)  PLL component circuit design 
+6)  PLL component circuit simulate
+7)  Layout Design
+8)  Pre layout simulation
+9)  Parasitic Extraction
+10) Post layout simulation
+11) Tapeout
+
+Day 1 : PLL Theory and setup tools for simulation 
+PLL Theory
+Why PLL?
+To get precise clock signal without frequency or phase noise.A PLL is a feedback system that compares the output phase with the input phase.
+The comparison is performed by a "phase comparator".To arrive the concept of phase locking, let us consider the problem of aligning the output phase of VCO with the phase of a
+reference clock.
+
+Basic block diagram of PLL
+
+![image](https://user-images.githubusercontent.com/67455761/127779269-1ab34b4f-a3df-48b1-90e8-58d3c3325e24.png)
+
+PLL have five blocks
+
+1) Phase Frequency Detector (PFD)
+
+
+
+![image](https://user-images.githubusercontent.com/67455761/127779625-5cdc1f15-3d73-4fa8-aa9e-b30aa5d8de7c.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Frequency Divider Circuit
 
