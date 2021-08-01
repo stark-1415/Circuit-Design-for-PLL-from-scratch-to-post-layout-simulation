@@ -3,7 +3,35 @@
 
 Here we have to learn to how we design a basic PLL circuit from scratch to post layout simulation.
 
+PLL Specification
+
+Technology - SKywater 130nm
+
+
+Supply Voltage    - 1.8V
+
+
+Process Corner    - TT
+
+
+Temperature       - room temperature
+
+
+Input Frequency(Fmin)   - 5Mhz, Fmax - 12.5Mhz
+
+
+Multiplier -8x
+
+
+Duty Cycle =50%
+
+
+Jitter < 20ns
+
+
+
 Overview 
+
 Day 1:    PLL Theory and setup tools for simulation
 
 content:  
@@ -38,9 +66,41 @@ PLL have five blocks
 
 1) Phase Frequency Detector (PFD)
 
+The phase difference between the input signal with frequency fin and the feedback (output) signal with frequency fout is proportional to the DC voltage produced by the phase detector. In this case, a phase detector is nothing more than a comparator. It generates a dc voltage by comparing the two frequency components delivered into its input. A phase detector is a multiplier that generates two frequency components.
 
+
+Basic block diagram of PLL is
 
 ![image](https://user-images.githubusercontent.com/67455761/127779625-5cdc1f15-3d73-4fa8-aa9e-b30aa5d8de7c.png)
+
+2) Charge Pump
+
+Charge pump circuit gives a constant current. The amplitude of the current always remains same.The polarity changes which depend on the value of the UP and DOWN signal.
+Traditional circuit has  non-ideal effects, such as leakage current, current mismatch.
+
+
+![image](https://user-images.githubusercontent.com/67455761/127780632-a8530c67-4bc7-4205-adeb-a28406fc0558.png)
+
+3) Low Pass Filter(LPF)
+
+The output of the phase detector is supplied to a low pass filter that removes from the output of the comparator the high frequency component and noise. The output of the phase detector is the sum and difference frequency of two input signals. Because the total of two frequencies (i.e., fi + fo) is a high-frequency component, the LPF filters it out. The difference (i.e., fi – fo) is a low-frequency component that the filter passes through. After that, the low-frequency dc voltage signal is sent into a dc amplifier, which boosts the signal level. After that, the VCO receives the enhanced signal.
+
+
+4) Voltage Controlled Oscillator (VCO)
+
+
+PLLs are continually adjusted to match (lock on) a phase and frequency of an input signal using a voltage-controlled oscillator (VCO) tuned by a unique half-conductive diode known as a varactor. The LPF output serves as a VCO control signal. The DC signal is produced by the VCO and its amplitude is proportional to the LPF output amplitude. In this case the VCO output frequency modification is done till the input signal frequency is equivalent.
+
+![image](https://user-images.githubusercontent.com/67455761/127781254-a8b88f6e-232e-4dab-b726-c96bd209a736.png)
+
+5) Frequency Divider
+
+
+When the frequency difference of each input is 0, which shows a consistent phase difference, the loop is locked.
+If the two signals are shifted by 180, the output voltage must be at the highest. The output voltage generated will be zero in the absence of an input signal to allow the VCO to function at a fixed frequency. This frequency is referred to as the oscillator's operating frequency.
+
+
+![image](https://user-images.githubusercontent.com/67455761/127781380-948db5ff-926e-482e-8c41-67f2a448e923.png)
 
 
 
