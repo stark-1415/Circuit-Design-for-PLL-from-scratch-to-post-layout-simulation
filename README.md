@@ -223,7 +223,7 @@ In layout, these are the following different colour codes for different componen
 To connect two transistors, we use interconnect layer. To connect two metal layers, we use the contact/via.
 
 ### 1) FD layout
- PFD layout show below 
+ FD layout show below 
  
  
 ![image](https://user-images.githubusercontent.com/67455761/127777573-ceed4a21-5c29-4b60-9ce8-bb4e2accf2b5.png)
