@@ -1,4 +1,9 @@
 # Circuit-Design-for-PLL-from-scratch-to-post-layout-simulation Design using SKY130nm-Technology
+
+
+![Screenshot (1066)](https://user-images.githubusercontent.com/35188692/127750108-df95ef4c-b283-4c7a-b14e-1d5fd7333671.png)
+
+
 2 day workshop 31st July to 1st August
 
 Here we have to learn to how we design a basic PLL circuit from scratch to post layout simulation.
